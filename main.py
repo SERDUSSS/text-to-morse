@@ -4,7 +4,7 @@ import os
 import sys
 from time import sleep
 
-if len(sys.argv) != 4: print("usage: python main.py <freq> <file>"); exit()
+#if len(sys.argv) != 4: print("usage: python main.py <freq> <file>"); exit()
 
 frequency = sys.argv[len(sys.argv)-2] #hz
 
@@ -16,9 +16,9 @@ def play(r: str):
     if r == "\n": sleep(1.5)
     elif r == " ": sleep(0.5)
     elif r == ".":
-        os.system('play -n synth %s sin %s' % (200/1000, frequency))
+        os.system(f"play -qn -c1 synth {200/1000} sine {frequency}")
     elif r == "-":
-        os.system('play -n synth %s sin %s' % (500/1000, frequency))
+        os.system(f"play -qn -c1 synth {400/1000} sine {frequency}")
 
 def string_to_pseudomorse(string):
     for i in range(len(letters)):
